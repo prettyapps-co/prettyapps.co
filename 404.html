@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Page not found · Pretty Apps</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#ece6f6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1327" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="mesh" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <nav class="nav glass" id="nav" aria-label="Primary">
+        <a class="brand" href="/">
+          <img class="brand__mark" src="/assets/icon.svg" alt="" width="30" height="30">
+          <span>Pretty Apps</span>
+        </a>
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+        <ul class="nav__links" id="nav-links">
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#watch">Apple Watch</a></li>
+          <li><a href="/#early-birds">Early birds</a></li>
+          <li><a href="/privacy.html">Privacy</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="doc glass notfound">
+      <div class="ring" aria-hidden="true">
+        <div class="ring__track"></div>
+        <div class="ring__sweep" style="--deg: 120deg; animation: none"></div>
+        <div class="ring__face"><div class="ring__time">404</div></div>
+      </div>
+      <h1>Nothing here.</h1>
+      <p>Which, for a meditation app, is almost the point. The page you were looking for doesn't exist.</p>
+      <a class="pill pill--primary" href="/">Back to Pause Point</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer glass">
+        <div class="footer__brand">
+          <img src="/assets/icon.svg" alt="" width="26" height="26" style="border-radius:7px">
+          <span>Pretty Apps</span>
+        </div>
+        <ul class="footer__links">
+          <li><a href="mailto:hello@prettyapps.co">hello@prettyapps.co</a></li>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+        </ul>
+        <p class="footer__made">Made with ♥ in sunny Georgia 🇬🇪 · © <span id="year">2026</span> Pretty Apps</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var nav = document.getElementById('nav');
+      var btn = nav.querySelector('.nav__toggle');
+      btn.addEventListener('click', function () {
+        var open = nav.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
