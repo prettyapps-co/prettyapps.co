@@ -101,7 +101,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .mesh, .ring__sweep, .ring__knob { animation: none !important; }
+  .mesh { animation: none !important; }
   html { scroll-behavior: auto; }
 }
 
@@ -238,7 +238,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   letter-spacing: -0.01em;
 }
 .brand:hover { text-decoration: none; }
-.brand__mark { width: 30px; height: 30px; border-radius: 8px; flex: none; }
 
 .nav__links {
   display: flex;
@@ -307,12 +306,14 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   padding: clamp(40px, 8vw, 96px) 0 clamp(48px, 8vw, 96px);
 }
 
-.hero__grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
-  gap: clamp(32px, 6vw, 80px);
+.hero__inner {
+  max-width: 44rem;
+  margin-inline: auto;
+  text-align: center;
 }
+.hero__inner .lede { margin-inline: auto; }
+.hero__eyebrow { justify-content: center; }
+.hero__actions { justify-content: center; }
 
 .hero__eyebrow {
   display: flex;
@@ -366,96 +367,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .store-badge[aria-disabled="true"] { cursor: default; opacity: 0.92; }
 .store-badge[aria-disabled="true"]:hover { transform: none; }
 
-/* The timer ring */
-.hero__visual {
-  display: grid;
-  place-items: center;
-}
 
-.ring {
-  --size: clamp(240px, 32vw, 360px);
-  position: relative;
-  width: var(--size);
-  height: var(--size);
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  padding: clamp(28px, 4vw, 44px);
-}
-
-.ring__track,
-.ring__sweep {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-}
-
-.ring__track {
-  background: conic-gradient(rgba(255,255,255,0.65) 0 100%);
-  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 14px), #000 calc(100% - 13px));
-          mask: radial-gradient(farthest-side, transparent calc(100% - 14px), #000 calc(100% - 13px));
-  opacity: 0.55;
-}
-@media (prefers-color-scheme: dark) {
-  .ring__track { background: rgba(255,255,255,0.18); }
-}
-
-.ring__sweep {
-  background: conic-gradient(from 0deg, #7d4ca8 0deg, #c357d8 var(--deg, 250deg), transparent var(--deg, 250deg));
-  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 14px), #000 calc(100% - 13px));
-          mask: radial-gradient(farthest-side, transparent calc(100% - 14px), #000 calc(100% - 13px));
-  animation: sweep 9s cubic-bezier(0.65, 0, 0.35, 1) infinite alternate;
-}
-
-@keyframes sweep {
-  from { --deg: 40deg; }
-  to   { --deg: 300deg; }
-}
-
-.ring__knob {
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 22px; height: 22px;
-  margin: -11px 0 0 -11px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 4px 14px rgba(90, 40, 140, 0.35);
-  transform: rotate(var(--deg, 250deg)) translateY(calc(var(--size) / -2 + 7px));
-  animation: sweep 9s cubic-bezier(0.65, 0, 0.35, 1) infinite alternate;
-}
-
-.ring__face {
-  text-align: center;
-  padding: 24px;
-}
-
-.ring__time {
-  font-size: clamp(2.4rem, 6vw, 3.6rem);
-  font-weight: 200;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
-}
-.ring__label {
-  margin-top: 8px;
-  font-size: 0.85rem;
-  color: var(--ink-muted);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-/* Registered <deg> so the conic angle can animate in supporting browsers. */
-@property --deg {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 250deg;
-}
-
-@media (max-width: 860px) {
-  .hero__grid { grid-template-columns: 1fr; }
-  .hero__visual { order: -1; }
-  .ring { --size: clamp(200px, 56vw, 280px); }
-}
 
 /* --------------------------------------------------------------------------
    Sections
@@ -486,17 +398,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 .card p { margin: 0; color: var(--ink-soft); }
 .card h3 { margin: 0; }
-
-.card__icon {
-  width: 46px; height: 46px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(135deg, rgba(125, 76, 168, 0.18), rgba(195, 87, 216, 0.22));
-  color: var(--accent-deep);
-  margin-bottom: 4px;
-}
-.card__icon svg { width: 24px; height: 24px; }
 
 .chips {
   display: flex;
@@ -534,7 +435,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .swatch--forest   { background: linear-gradient(135deg, #2f6b4f, #8fd3a6); }
 .swatch--sky      { background: linear-gradient(135deg, #3c7fd6, #a6d8ff); }
 
-/* Two-column feature rows (Watch / Health) */
+/* Two-column feature rows (Health / privacy) */
 .split {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -543,30 +444,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 760px) { .split { grid-template-columns: 1fr; } }
 
 .split .card { padding: 32px 30px; }
-
-/* Decorative circles for the Watch card */
-.orbit {
-  position: relative;
-  width: 120px; height: 120px;
-  margin: 6px 0 14px;
-}
-.orbit__c {
-  position: absolute;
-  border-radius: 50%;
-  border: 2px solid rgba(125, 76, 168, 0.35);
-}
-.orbit__c:nth-child(1) { inset: 0; }
-.orbit__c:nth-child(2) { inset: 18px; border-color: rgba(195, 87, 216, 0.45); }
-.orbit__c:nth-child(3) { inset: 38px; background: linear-gradient(135deg, #7d4ca8, #c357d8); border: 0; }
-.orbit__dot {
-  position: absolute;
-  width: 14px; height: 14px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(90,40,140,0.3);
-  top: -6px; left: 50%;
-  margin-left: -7px;
-}
 
 /* Early-bird callout */
 .callout {
@@ -595,7 +472,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   align-items: center;
   gap: 18px 32px;
 }
-.footer__brand { display: flex; align-items: center; gap: 10px; font-weight: 600; }
+.footer__brand { font-weight: 600; }
 .footer__links {
   display: flex; flex-wrap: wrap; gap: 6px 22px;
   list-style: none; margin: 0; padding: 0;
@@ -674,5 +551,14 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   flex-direction: column;
   gap: 8px;
 }
-.notfound .ring { --size: 180px; margin-bottom: 20px; padding: 20px; }
-.notfound .ring__time { font-size: 2.6rem; }
+.notfound__code {
+  font-size: clamp(4rem, 12vw, 6rem);
+  font-weight: 200;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 0 0 8px;
+  background: linear-gradient(135deg, #7d4ca8, #c357d8);
+  -webkit-background-clip: text;
+          background-clip: text;
+  color: transparent;
+}
