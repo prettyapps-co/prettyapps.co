@@ -12,7 +12,7 @@ domain `prettyapps.co`.
 | `privacy.html` | Privacy Policy for Pause Point |
 | `404.html` | Not-found page (GitHub Pages serves this automatically) |
 | `styles.css` | The single shared stylesheet |
-| `assets/icon.svg` | App icon (used as the logo mark) |
+| `assets/icon.svg` | Pause Point app icon (used in the social preview image) |
 | `assets/favicon.svg` | Favicon |
 | `assets/apple-touch-icon.png` | 180×180 icon for iOS home-screen bookmarks |
 | `assets/og-image.png` | 1200×630 social preview image |
@@ -32,9 +32,9 @@ python3 -m http.server 8000
 ### Swapping in the real App Store link
 
 When Pause Point is live, edit `index.html` and change the one `href` on the
-element with `id="app-store-link"` from `#` to the App Store URL, and delete
-its `aria-disabled="true"` attribute. Optionally update the two "Coming soon"
-labels in the hero and the Early birds section.
+element with `id="app-store-link"` from `#` to the App Store URL, delete its
+`aria-disabled="true"` attribute, and change the badge label from
+"Coming soon to iOS" to "Download on the App Store".
 
 ## One-time setup: GitHub Pages + custom domain
 
